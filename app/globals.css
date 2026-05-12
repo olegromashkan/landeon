@@ -1,0 +1,293 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 240 5% 92%;
+    --card: 240 6% 8%;
+    --card-foreground: 240 5% 92%;
+    --popover: 240 6% 6%;
+    --popover-foreground: 240 5% 92%;
+    --primary: 271 81% 66%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4% 14%;
+    --secondary-foreground: 240 5% 75%;
+    --muted: 240 4% 12%;
+    --muted-foreground: 240 4% 50%;
+    --accent: 271 81% 66%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 4% 16%;
+    --input: 240 4% 12%;
+    --ring: 271 81% 66%;
+    --radius: 0.625rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a3a;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a4a;
+  }
+
+  /* Focus visible only for keyboard */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer utilities {
+  .text-gradient-purple {
+    background: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(168, 85, 247, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168, 85, 247, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .glass-panel {
+    background: rgba(17, 17, 24, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .thesis-pages {
+    overflow-x: auto;
+    padding-bottom: 32px;
+  }
+
+  .thesis-page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 24px;
+    padding: 25mm 15mm 25mm 30mm;
+    position: relative;
+    background: #ffffff;
+    color: #111111;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    text-align: justify;
+  }
+
+  .thesis-page h1,
+  .thesis-page h2,
+  .thesis-page h3,
+  .thesis-page p,
+  .thesis-page ol,
+  .thesis-page ul,
+  .thesis-page table {
+    color: #111111;
+  }
+
+  .thesis-page p {
+    margin: 0 0 10pt;
+    text-indent: 12.5mm;
+  }
+
+  .thesis-page .no-indent,
+  .thesis-page li p,
+  .thesis-page td p,
+  .thesis-page th p {
+    text-indent: 0;
+  }
+
+  .thesis-chapter-title {
+    margin: 0 0 16pt;
+    text-align: center;
+    font-size: 14pt;
+    font-weight: 700;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .thesis-section-title {
+    margin: 0 0 12pt;
+    text-align: left;
+    text-indent: 12.5mm;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .thesis-list {
+    margin: 0 0 10pt 10mm;
+    padding: 0;
+  }
+
+  .thesis-list li {
+    margin: 0 0 5pt;
+  }
+
+  .thesis-table-wrap,
+  .thesis-figure,
+  .thesis-formula {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .thesis-element-reference {
+    margin: 0 0 4pt;
+    font-size: 12pt;
+  }
+
+  .thesis-table-caption {
+    margin: 8pt 0 4pt;
+    text-align: right;
+    font-size: 12pt;
+    font-weight: 700;
+  }
+
+  .thesis-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10pt;
+    font-size: 10.5pt;
+    line-height: 1.35;
+  }
+
+  .thesis-table th,
+  .thesis-table td {
+    border: 1px solid #111111;
+    padding: 4pt 5pt;
+    vertical-align: top;
+  }
+
+  .thesis-table th {
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .thesis-figure-box {
+    min-height: 52mm;
+    margin-top: 8pt;
+    border: 1px solid #111111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10pt;
+    text-align: center;
+    text-indent: 0;
+  }
+
+  .thesis-figure-image {
+    display: block;
+    max-width: 100%;
+    max-height: 96mm;
+    margin: 8pt auto 0;
+    object-fit: contain;
+    border: 1px solid #111111;
+  }
+
+  .thesis-figure-caption {
+    margin: 5pt 0 10pt;
+    text-align: center;
+    font-size: 12pt;
+    text-indent: 0;
+  }
+
+  .thesis-formula-expression {
+    margin: 8pt 0 4pt;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12pt;
+    text-indent: 0;
+  }
+
+  .thesis-page-number {
+    position: absolute;
+    left: 30mm;
+    right: 15mm;
+    bottom: 9mm;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12pt;
+    color: #111111;
+  }
+
+  .thesis-page:first-child .thesis-page-number {
+    display: none;
+  }
+
+  .thesis-title-center {
+    text-align: center;
+    text-indent: 0;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 25mm 15mm 25mm 30mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #ffffff !important;
+  }
+
+  .print-hidden {
+    display: none !important;
+  }
+
+  .thesis-pages {
+    overflow: visible;
+    padding: 0;
+  }
+
+  .thesis-page {
+    width: 165mm;
+    min-height: 247mm;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .thesis-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .thesis-page-number {
+    bottom: -16mm;
+  }
+}
